@@ -46,6 +46,12 @@ module Frameit
 
     def prepare_image
       @image = MiniMagick::Image.open(screenshot.path)
+      # TODO This throws "ImageMagick/GraphicsMagick is not installed" on Windows if no ImageMagick is installed
+      # This should be handled better somehow - maybe during `frameit` loading/startup check already if MiniMagick is happy?
+      # Install ImageMagick 6 (!)
+      # https://legacy.imagemagick.org/script/download.php#windows
+      # Install ImageMagick 7 and set checkbox "Install legacy utilities (e.g. convert)" during installation
+      # https://imagemagick.org/script/download.php#windows
     end
 
     def rotation_for_device_orientation
